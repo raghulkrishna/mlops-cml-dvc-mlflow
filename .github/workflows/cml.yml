@@ -1,0 +1,29 @@
+name: iris-cml
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: iterative/setup-cml@v1
+      - uses: actions/checkout@v2
+      - name: cml_run
+        env:
+          
+          MLFLOWURI: ${{ secrets.MLFLOWURI }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          # Your ML workflow goes here
+          /usr/bin/python3 -m pip install --upgrade pip
+          pip install -r req.txt
+          python iris.py
+                    
+          echo "## Data viz" >> report.md
+          bash cml_script/cml_image_publish.sh
+          
+          cml-send-comment report.md
