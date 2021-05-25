@@ -25,7 +25,7 @@ mlflow.set_tracking_uri(os.environ['MLFLOWURI'])
 mlflow.set_experiment("cml-dvc experiment")
 repo=os.getcwd()
 train_resource_url = dvc.api.get_url(
-    path='train.csv',
+    path='iris.csv',
     repo=repo,
   
 
