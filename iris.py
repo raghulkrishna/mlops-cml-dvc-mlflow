@@ -29,6 +29,7 @@ train_resource_url = dvc.api.get_url(
 
 df = pd.read_csv(train_resource_url)
 print(df.head())
+print(df.variety.value_counts())
 print(df.shape)
 X =  df[['sepal.length', 'sepal.width', 'petal.length', 'petal.width']]
 y = df[['variety']]
