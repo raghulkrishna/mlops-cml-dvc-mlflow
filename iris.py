@@ -1,10 +1,7 @@
 import mlflow
-import argparse
 import sys
 from mlflow import pyfunc
 import pandas as pd
-import shutil
-import tempfile
 import mlflow.tensorflow
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
