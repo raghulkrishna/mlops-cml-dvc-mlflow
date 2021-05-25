@@ -24,7 +24,6 @@ repo=os.getcwd()
 train_resource_url = dvc.api.get_url(
     path='iris.csv',
     repo=repo,
-  
 
     )
 
